@@ -5,6 +5,7 @@ import RandomFromMap from "../util/randomfrommap"
 
 export default class Data {
     public players: Map<number, Player> = new Map<number, Player>()
+    public updated: number = Date.now()
 
     constructor() {
         this._populate(15)
@@ -16,6 +17,7 @@ export default class Data {
             const n = getNewScore(p.score)
             console.log("s")
             p.setScore(n)
+            this.updated = Date.now()
         }, 10000)
     }
 

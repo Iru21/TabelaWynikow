@@ -19,7 +19,7 @@ export default class APIRouter {
         })
 
         this.router.get('/players/getAll', (req: Request, res: Response) => {
-            res.status(200).json(Array.from(this._db.players.values()))
+            res.status(200).json({updated: this._db.updated, players: Array.from(this._db.players.values())})
         })
 
         this.router.delete('/players/reset', (req: Request, res: Response) => {

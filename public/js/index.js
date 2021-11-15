@@ -60,8 +60,13 @@ async function getPlayers() {
     /**
      * @type {Object}
      */
-    const data = await (await fetch('api/players/getAll')).json()
-    return data.map(p => new Player(p.id, p.name, p.score))
+    const data = (await (await fetch('api/players/getAll')).json())
+    setLastUpdate(data.updated)
+    return data.players.map(p => new Player(p.id, p.name, p.score))
+}
+
+function setLastUpdate(date) {
+    $('lastUpdate').innerText = new Date(date).toISOString().replace("T", " ").split(".")[0]
 }
 
 function clearTable() {

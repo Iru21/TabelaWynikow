@@ -12,3 +12,7 @@
     align-items: center;
     padding: 15px;
 }
+
+#lastUpdate {
+    font-weight: bold;
+}

@@ -40,8 +40,9 @@ function addToTable(player, place) {
     /**
      * @type {HTMLTableCellElement[]}
      */
-    const [n, name, score] = createCells(r)
+    const [n, id, name, score] = createCells(r)
     n.innerText = place
+    id.innerText = player.id
     name.innerText = player.name
     score.innerText = player.score
 }
@@ -56,7 +57,6 @@ function sortByScore(players) {
 }
 
 async function getPlayers() {
-    // piekło (:
     /**
      * @type {Object}
      */
@@ -85,7 +85,7 @@ function createRow(t) {
 
 function createCells(r) {
     const c = []
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 4; i++) {
         c.push(r.insertCell(i))
     }
     return c

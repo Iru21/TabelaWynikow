@@ -1,5 +1,5 @@
 * {
-    overflow: hidden;
+    overflow-x: hidden;
     user-select: none;
     text-decoration: none;
     color: white;

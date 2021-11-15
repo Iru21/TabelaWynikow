@@ -26,6 +26,7 @@ export default class Data {
         this.players.forEach((p) => {
             p.setScore(0)
         })
+        this.updated = Date.now()
     }
 
     private _populate(n: number) {

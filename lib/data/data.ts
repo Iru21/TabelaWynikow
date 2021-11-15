@@ -2,6 +2,9 @@ import Player from "./player"
 
 import getNewScore from "../util/getnewscore"
 import RandomFromMap from "../util/randomfrommap"
+import GetRandomNames from "../util/getrandomnames"
+
+import { randomBytes } from "crypto"
 
 export default class Data {
     public players: Map<number, Player> = new Map<number, Player>()
@@ -26,13 +29,14 @@ export default class Data {
         this.players.forEach((p) => {
             p.setScore(0)
         })
-        this.updated = Date.now()
     }
 
-    private _populate(n: number) {
+    private async _populate(n: number) {
         console.log("c")
+        const names = await GetRandomNames()
         for(let i = 0; i < n; i++) {
-            this.players.set(i, new Player(i, `Gracz ${i}`, 0))
+            this.players.set(i, new Player(randomBytes(10).toString('hex'), names[i], 0))
         }
+        console.log(this.players)
     }
 }

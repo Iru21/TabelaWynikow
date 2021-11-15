@@ -7,6 +7,8 @@ class Player {
     }
 }
 
+const state = new Map()
+
 const $ = (id) => document.getElementById(id)
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,7 +25,11 @@ async function addPlayersToTable() {
     const players = await getPlayers()
     const sorted = sortByScore(players)
     for(let i = 0; i < sorted.length; i++) {
-        addToTable(sorted[i], i + 1)
+        const lastState = state.get(sorted[i].id)
+        const place = i + 1
+        const char = (lastState == undefined || lastState == place) ? '' : (lastState > place ? `- | ↑ (z pozycji ${lastState})` : `- | ↓ (z pozycji ${lastState})`)
+        addToTable(sorted[i], `${place} ${char}`)
+        state.set(sorted[i].id, place)
     }
 }
 

@@ -49,8 +49,18 @@ function addToTable(player, place) {
     const [n, id, name, score] = createCells(r)
     n.innerText = place
     id.innerText = player.id
-    name.innerText = player.name
     score.innerText = player.score
+
+    const picEl = document.createElement('img')
+    name.appendChild(picEl)
+    picEl.src = `https://avatars.dicebear.com/api/identicon/${player.name.split(' ')[0]}.svg`
+    picEl.width = '20'
+    picEl.height = '20'
+    picEl.style.marginRight = '10px'
+    
+    const nameEl = document.createElement('span')
+    name.appendChild(nameEl)
+    nameEl.innerText = player.name
 }
 
 /**
